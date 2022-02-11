@@ -9,6 +9,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
+from django.views import View
+
 
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
@@ -21,9 +23,10 @@ def index(request):
     context_dict['pages'] = page_list
     visitor_cookie_handler(request)
 
-    context_dict['visits'] = request.session['visits']
+    context_dict['visitors'] = request.session['visits']
     response = render(request, 'rango/index.html', context=context_dict)
     return response;
+
 
 def about(request):
     context_dict = {'name': 'Farzwan Mohamed'}
@@ -196,7 +199,3 @@ def visitor_cookie_handler(request):
         request.session['last_visit'] = last_visit_cookie
         # Update/set the visits cookie
         request.session['visits'] = visits
-
-
-
-
