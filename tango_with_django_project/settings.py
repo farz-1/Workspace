@@ -116,6 +116,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 STATICFILES_DIRS = [STATIC_DIR, ]
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 1209600
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
